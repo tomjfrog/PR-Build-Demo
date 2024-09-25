@@ -19,6 +19,16 @@ jobs:
         with:
           oidc-audience: jfrog-github
           oidc-provider-name: github-oidc-integration
+
+      - name: Configure NPM Project for JF CLI
+        id: configure-npm-project
+        shell: bash
+        run: |
+          jf npm-config \
+          --server-id-resolve=setup-jfrog-cli-server \
+          --server-id-deploy=setup-jfrog-cli-server
+        
+
       - name: Build NPM Project
         id: build-npm-project
         shell: bash
