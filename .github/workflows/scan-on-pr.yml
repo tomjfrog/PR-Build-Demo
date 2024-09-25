@@ -32,14 +32,14 @@ jobs:
 
       - name: Build NPM Project
         id: build-npm-project
-        working-dir: ./app
+        working-directory: ./app
         shell: bash
         run: |
           jf npm install
 
       - name: Publish NPM Project
         id: pub-npm-project
-        working-dir: ./app
+        working-directory: ./app
         shell: bash
         run: |
           jf npm publish
