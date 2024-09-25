@@ -37,13 +37,12 @@ jobs:
         run: |
           jf npm install
 
-      - name: Publish NPM Project
-        id: pub-npm-project
+      - name: Scan Dependencies
+        id: scan-deps
         working-directory: ./app
         shell: bash
         run: |
-          jf npm publish
-          
+          jf audit
 
 
 
