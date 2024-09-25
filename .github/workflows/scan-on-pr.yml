@@ -26,8 +26,9 @@ jobs:
         run: |
           jf npm-config \
           --server-id-resolve=setup-jfrog-cli-server \
-          --server-id-deploy=setup-jfrog-cli-server
-        
+          --server-id-deploy=setup-jfrog-cli-server \
+          --repo-resolve=hpe-demo-npm \
+          --repo-deploy=hpe-demo-npm
 
       - name: Build NPM Project
         id: build-npm-project
