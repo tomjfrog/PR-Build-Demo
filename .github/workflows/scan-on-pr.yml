@@ -34,7 +34,7 @@ jobs:
         id: build-npm-project
         shell: bash
         run: |
-          jf npm ci
+          jf npm install
 
       - name: Publish NPM Project
         id: pub-npm-project
