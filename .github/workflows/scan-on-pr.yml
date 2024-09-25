@@ -2,19 +2,33 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [ push ]
 jobs:
-  s:
+  scan-on-pr:
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4.1.7
 
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4.4.1
+        id: setup-jfrog-cli
         env:
           JF_URL: https://tomjfrog.jfrog.io
+          JFROG_CLI_AVOID_NEW_VERSION_WARNING: true
         with:
-          oidc-audience: github-jfrog-oidc
+          oidc-audience: jfrog-github
+          oidc-provider-name: github-oidc-integration
+      - name: Build NPM Project
+        id: build-npm-project
+        shell: bash
+        run: |
+          jf npm ci
+
+      - name: Publish NPM Project
+        id: pub-npm-project
+        shell: bash
+        run: |
+          jf npm publish
+          
 
 
 
